@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPrognoz", "BookPrognoz\BookPrognoz.csproj", "{86BAAD51-C76B-4B65-BC06-3EEFC617F291}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPAdministrator", "BPAdministrator\BPAdministrator.csproj", "{68DE6CC7-E9A6-4C66-B11E-C3A4BEDD0335}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86BAAD51-C76B-4B65-BC06-3EEFC617F291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BAAD51-C76B-4B65-BC06-3EEFC617F291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BAAD51-C76B-4B65-BC06-3EEFC617F291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BAAD51-C76B-4B65-BC06-3EEFC617F291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DE6CC7-E9A6-4C66-B11E-C3A4BEDD0335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DE6CC7-E9A6-4C66-B11E-C3A4BEDD0335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DE6CC7-E9A6-4C66-B11E-C3A4BEDD0335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DE6CC7-E9A6-4C66-B11E-C3A4BEDD0335}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
