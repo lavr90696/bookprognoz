@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Diagnostics;
+using FirebirdConnectionForm;
 
 namespace BookPrognoz
 {
@@ -14,7 +16,32 @@ namespace BookPrognoz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BPMainF());
+
+            bool zebedeStarted = false;
+
+            //runing zebedee
+            ProcessStartInfo psi = new ProcessStartInfo(Application.StartupPath + "\\zebedee.exe");
+            psi.WindowStyle = ProcessWindowStyle.Hidden;
+            psi.Arguments = "-fmyconf.zbd";
+            Process pr = new Process();
+            pr.StartInfo = psi;
+
+            if (pr.Start())
+                zebedeStarted = true;
+
+            //connecting to DB
+            FbConnectionForm cFrm = new FbConnectionForm();
+            cFrm.Database = "bookprognoz";                      
+
+            if (cFrm.ShowDialog() == DialogResult.OK)
+            {                
+                BPMainF form = new BPMainF(cFrm.Connection);
+                Application.Run(form);
+            }
+
+            if (zebedeStarted)
+                pr.Kill();
+           
         }
     }
 }

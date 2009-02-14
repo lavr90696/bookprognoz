@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this._eventsDGV = new System.Windows.Forms.DataGridView();
-            this._ticketNumberL = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this._homeTeamCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._awayTeamCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._homeWinsCOL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this._drawCOL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this._awayWinsCOL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._ticketNumberL = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this._addTicketB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._eventsDGV)).BeginInit();
             this.SuspendLayout();
@@ -57,22 +57,6 @@
             this._eventsDGV.Name = "_eventsDGV";
             this._eventsDGV.Size = new System.Drawing.Size(456, 352);
             this._eventsDGV.TabIndex = 0;
-            // 
-            // _ticketNumberL
-            // 
-            this._ticketNumberL.AutoSize = true;
-            this._ticketNumberL.Location = new System.Drawing.Point(12, 12);
-            this._ticketNumberL.Name = "_ticketNumberL";
-            this._ticketNumberL.Size = new System.Drawing.Size(79, 13);
-            this._ticketNumberL.TabIndex = 1;
-            this._ticketNumberL.Text = "Номер билета";
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(97, 9);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(125, 20);
-            this.maskedTextBox1.TabIndex = 2;
             // 
             // _homeTeamCOL
             // 
@@ -106,6 +90,22 @@
             this._awayWinsCOL.HeaderText = "2";
             this._awayWinsCOL.Name = "_awayWinsCOL";
             // 
+            // _ticketNumberL
+            // 
+            this._ticketNumberL.AutoSize = true;
+            this._ticketNumberL.Location = new System.Drawing.Point(12, 12);
+            this._ticketNumberL.Name = "_ticketNumberL";
+            this._ticketNumberL.Size = new System.Drawing.Size(79, 13);
+            this._ticketNumberL.TabIndex = 1;
+            this._ticketNumberL.Text = "Номер билета";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(97, 9);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(125, 20);
+            this.maskedTextBox1.TabIndex = 2;
+            // 
             // _addTicketB
             // 
             this._addTicketB.Location = new System.Drawing.Point(330, 400);
@@ -126,6 +126,7 @@
             this.Controls.Add(this._eventsDGV);
             this.Name = "BPMainF";
             this.Text = "BookPrognoz";
+            this.Load += new System.EventHandler(this.BPMainF_Load);
             ((System.ComponentModel.ISupportInitialize)(this._eventsDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
