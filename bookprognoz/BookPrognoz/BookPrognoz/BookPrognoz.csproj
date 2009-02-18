@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookPrognozException.cs" />
     <Compile Include="BPIniWriter.cs" />
     <Compile Include="BPMainF.cs">
       <SubType>Form</SubType>
