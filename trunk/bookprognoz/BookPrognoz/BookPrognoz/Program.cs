@@ -19,6 +19,7 @@ namespace BookPrognoz
 
             bool zebedeStarted = false;
 
+#if !DEBUG
             //runing zebedee
             ProcessStartInfo psi = new ProcessStartInfo(Application.StartupPath + "\\zebedee.exe");
             psi.WindowStyle = ProcessWindowStyle.Hidden;
@@ -28,6 +29,7 @@ namespace BookPrognoz
 
             if (pr.Start())
                 zebedeStarted = true;
+#endif
 
             //connecting to DB
             FbConnectionForm cFrm = new FbConnectionForm();
@@ -39,8 +41,10 @@ namespace BookPrognoz
                 Application.Run(form);
             }
 
+#if !DEBUG
             if (zebedeStarted)
                 pr.Kill();
+#endif
            
         }
     }
