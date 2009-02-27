@@ -70,7 +70,7 @@ namespace BookPrognoz
         {
             _events = new DataTable("events");
             
-             FbCommand cmd = new FbCommand("select eventid, home, away from get_events_list", 
+             FbCommand cmd = new FbCommand("select eventid, number, home, away from get_events_list", 
                 _connection);
 
             FbDataAdapter da = new FbDataAdapter(cmd);
@@ -125,42 +125,65 @@ namespace BookPrognoz
 
             FbTransaction trans = _connection.BeginTransaction();
 
-            FbCommand cmd = new FbCommand("create_ticket", _connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Transaction = trans;
+            if (number.Length > 8)
+                throw new BookPrognozException("Номер не может состоять более чем из 6 цифр");
 
-            cmd.Parameters.Add("number", number);
-            cmd.Parameters.Add("punct", punctId);
-            FbParameter betIdParam = new FbParameter("id", FbDbType.BigInt);
-            betIdParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(betIdParam);
-
-            cmd.ExecuteNonQuery();
-
-            long betId = Convert.ToInt64(betIdParam.Value);
-
-            FbCommand addEventCmd = new FbCommand("add_event_to_bet", _connection);
-            addEventCmd.Transaction = trans;
-            addEventCmd.CommandType = CommandType.StoredProcedure;
-
-            addEventCmd.Parameters.Add("betId", betId);
-            addEventCmd.Parameters.Add("eventId", FbDbType.BigInt);
-            addEventCmd.Parameters.Add("issueId", FbDbType.Integer);
-
-            foreach (DataRow dr in issuesTable.Rows)
+            if (number.Length < 6)
             {
-                addEventCmd.Parameters["eventId"].Value = dr["eventId"];
+                number = "000000" + number;
+                number = number.Substring(number.Length - 6);
+            }
 
-                foreach (DataColumn col in issuesTable.Columns)
+            try
+            {
+
+                FbCommand cmd = new FbCommand("create_ticket", _connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Transaction = trans;
+
+                cmd.Parameters.Add("number", number);
+                cmd.Parameters.Add("punct", punctId);
+                FbParameter betIdParam = new FbParameter("id", FbDbType.BigInt);
+                betIdParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(betIdParam);
+
+                cmd.ExecuteNonQuery();
+
+                long betId = Convert.ToInt64(betIdParam.Value);
+
+                FbCommand addEventCmd = new FbCommand("add_event_to_bet", _connection);
+                addEventCmd.Transaction = trans;
+                addEventCmd.CommandType = CommandType.StoredProcedure;
+
+                addEventCmd.Parameters.Add("betId", betId);
+                addEventCmd.Parameters.Add("eventId", FbDbType.BigInt);
+                addEventCmd.Parameters.Add("issueId", FbDbType.Integer);
+
+                foreach (DataRow dr in issuesTable.Rows)
                 {
-                    if (dr[col.ColumnName] is bool && 
-                        ((bool)dr[col.ColumnName]) == true)
+                    addEventCmd.Parameters["eventId"].Value = dr["eventId"];
+
+                    foreach (DataColumn col in issuesTable.Columns)
                     {
-                        addEventCmd.Parameters["issueId"].Value = Convert.ToInt32(col.ColumnName);                        
-                        break;
-                    }                                                          
+                        if (dr[col.ColumnName] is bool &&
+                            ((bool)dr[col.ColumnName]) == true)
+                        {
+                            addEventCmd.Parameters["issueId"].Value = Convert.ToInt32(col.ColumnName);
+                            break;
+                        }
+                    }
+                    addEventCmd.ExecuteNonQuery();
                 }
-                addEventCmd.ExecuteNonQuery();
+            }
+            catch (FbException)
+            {
+                try
+                {
+                    trans.Rollback();
+                }
+                catch 
+                {}
+                return;
             }
 
             trans.Commit();
