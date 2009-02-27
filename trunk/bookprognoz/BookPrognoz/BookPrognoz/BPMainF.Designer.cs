@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BPMainF));
             this._eventsDGV = new System.Windows.Forms.DataGridView();
+            this.NumberCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._homeTeamCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._awayTeamCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._ticketNumberL = new System.Windows.Forms.Label();
@@ -47,6 +49,7 @@
             this._eventsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._eventsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._eventsDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumberCOL,
             this._homeTeamCOL,
             this._awayTeamCOL});
             this._eventsDGV.Location = new System.Drawing.Point(12, 42);
@@ -56,6 +59,14 @@
             this._eventsDGV.Size = new System.Drawing.Size(456, 352);
             this._eventsDGV.TabIndex = 0;
             this._eventsDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this._eventsDGV_CellContentClick);
+            // 
+            // NumberCOL
+            // 
+            this.NumberCOL.DataPropertyName = "Number";
+            this.NumberCOL.FillWeight = 5F;
+            this.NumberCOL.HeaderText = "N";
+            this.NumberCOL.Name = "NumberCOL";
+            this.NumberCOL.ReadOnly = true;
             // 
             // _homeTeamCOL
             // 
@@ -85,12 +96,14 @@
             // _ticketNumberME
             // 
             this._ticketNumberME.Location = new System.Drawing.Point(97, 9);
+            this._ticketNumberME.Mask = "999999";
             this._ticketNumberME.Name = "_ticketNumberME";
             this._ticketNumberME.Size = new System.Drawing.Size(125, 20);
             this._ticketNumberME.TabIndex = 2;
             // 
             // _addTicketB
             // 
+            this._addTicketB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this._addTicketB.Location = new System.Drawing.Point(330, 400);
             this._addTicketB.Name = "_addTicketB";
             this._addTicketB.Size = new System.Drawing.Size(137, 23);
@@ -108,6 +121,7 @@
             this.Controls.Add(this._ticketNumberME);
             this.Controls.Add(this._ticketNumberL);
             this.Controls.Add(this._eventsDGV);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BPMainF";
             this.Text = "BookPrognoz";
             this.Load += new System.EventHandler(this.BPMainF_Load);
@@ -123,6 +137,7 @@
         private System.Windows.Forms.Label _ticketNumberL;
         private System.Windows.Forms.MaskedTextBox _ticketNumberME;
         private System.Windows.Forms.Button _addTicketB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumberCOL;
         private System.Windows.Forms.DataGridViewTextBoxColumn _homeTeamCOL;
         private System.Windows.Forms.DataGridViewTextBoxColumn _awayTeamCOL;
     }

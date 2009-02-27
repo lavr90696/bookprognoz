@@ -16,6 +16,7 @@ namespace BookPrognoz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
             bool zebedeStarted = false;
 
@@ -46,6 +47,11 @@ namespace BookPrognoz
                 pr.Kill();
 #endif
            
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
