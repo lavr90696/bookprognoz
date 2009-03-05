@@ -13,18 +13,19 @@ namespace BPAdministrator
     public partial class MainF : Form
     {
         FbConnection _connection;
-        DataTable _matchesTable;
+        DataTable _matchesTable = new DataTable();
 
         public MainF(FbConnection connection)
         {
             _connection = connection;
-
             InitializeComponent();
+            
+            _editionViewer.FbConnection = _connection;
         }
 
-        private void _addEditionB_Click(object sender, EventArgs e)
+        private void MainF_Load(object sender, EventArgs e)
         {
-
+            _editionViewer.Init();
         }
     }
 }
