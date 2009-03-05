@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Add.Controls, Version=1.0.3345.21028, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ADD.Controls\ADD.Controls\bin\Release\Add.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdConnectionForm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BMSBuhgalter\FirebirdConnectionForm\bin\Release\FirebirdConnectionForm.dll</HintPath>
@@ -39,6 +43,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Prog\FirebirdClient 2.0\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -47,6 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditionEditorF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditionEditorF.Designer.cs">
+      <DependentUpon>EditionEditorF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditionViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditionViewer.Designer.cs">
+      <DependentUpon>EditionViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +72,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditionEditorF.resx">
+      <DependentUpon>EditionEditorF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditionViewer.resx">
+      <DependentUpon>EditionViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainF.resx">
       <DependentUpon>MainF.cs</DependentUpon>
       <SubType>Designer</SubType>
