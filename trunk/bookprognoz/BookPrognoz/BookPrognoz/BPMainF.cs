@@ -183,7 +183,8 @@ namespace BookPrognoz
                 }
                 catch 
                 {}
-                return;
+
+                throw;
             }
 
             trans.Commit();

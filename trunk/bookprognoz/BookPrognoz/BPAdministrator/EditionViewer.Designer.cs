@@ -34,6 +34,7 @@
             this._endDateCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._startDateCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._stateCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._amountCOL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SuspendLayout();
             // 
             // _addEditionB
@@ -58,7 +59,8 @@
             this.NumberCOL,
             this._endDateCOL,
             this._startDateCOL,
-            this._stateCOL});
+            this._stateCOL,
+            this._amountCOL});
             this._editionsGrid.FiltersPanelVisilbe = false;
             this._editionsGrid.Location = new System.Drawing.Point(3, 3);
             this._editionsGrid.MultiSelect = true;
@@ -66,7 +68,7 @@
             this._editionsGrid.QuickSearchPanelVisible = false;
             this._editionsGrid.ReportDefenitionFilePath = null;
             this._editionsGrid.ReportHeader = null;
-            this._editionsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.RowHeaderSelect;
+            this._editionsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._editionsGrid.Size = new System.Drawing.Size(576, 379);
             this._editionsGrid.SummaryPanelVisible = true;
             this._editionsGrid.TabIndex = 2;
@@ -105,6 +107,14 @@
             this._stateCOL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this._stateCOL.Visible = false;
             // 
+            // _amountCOL
+            // 
+            this._amountCOL.DataPropertyName = "tickets";
+            this._amountCOL.HeaderText = "Количество";
+            this._amountCOL.Name = "_amountCOL";
+            this._amountCOL.ReadOnly = true;
+            this._amountCOL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // EditionViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,5 +135,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn _endDateCOL;
         private System.Windows.Forms.DataGridViewTextBoxColumn _startDateCOL;
         private System.Windows.Forms.DataGridViewTextBoxColumn _stateCOL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _amountCOL;
     }
 }
